@@ -3,7 +3,7 @@ const amqp = require('amqplib');
 async function receiveMail(){
 
     try{
-        const connection = await amqp.connect('amqp:/localhost');
+        const connection = await amqp.connect('amqp://localhost');
         const channel = await connection.createChannel();
         //Create an queue from where we will consume the message
         await channel.assertQueue('mail_queue', {durable : false});

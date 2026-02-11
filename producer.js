@@ -32,7 +32,9 @@ async function sendMail(){
          channel.publish(exchangeName , routingKey,Buffer.from(JSON.stringify(message)));
         console.log("Mail has been sent");
         
-        connection.close();
+        setInterval(()=>{
+                connection.close();
+        },5000);
     }catch(err){
         console.log(err);
     }
