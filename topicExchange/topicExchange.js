@@ -7,7 +7,7 @@ async function sendMessage(routingKey, message){
         const exchangeName = "notification_exchange";
         const exchangeType ="topic";
         
-        await channel.assertExchange(exchangeName,routingKey, {durable : true});
+        await channel.assertExchange(exchangeName,exchangeType, {durable : true});
 
         channel.pubish(exchangeName,routingKey,Buffer.from(JSON.stringify(message),{durable : true}));
         console.log("Message sent to exchange", exchangeName, "with routing key", routingKey);
